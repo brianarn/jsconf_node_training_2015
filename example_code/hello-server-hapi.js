@@ -11,6 +11,14 @@ server.route({
   }
 });
 
+server.route({
+  method: 'GET',
+  path: '/{name}',
+  handler: function (req, reply) {
+    reply('Hello, ' + encodeURIComponent(req.params.name) + '!');
+  }
+});
+
 server.start(function () {
   console.log('Server running at 1337');
 });
