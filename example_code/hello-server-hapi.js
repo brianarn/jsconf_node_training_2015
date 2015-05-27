@@ -3,6 +3,7 @@ var Hapi = require('hapi');
 var server = new Hapi.Server();
 server.connection({ port : 1337 });
 
+/*
 server.route({
   method: 'GET',
   path: '/',
@@ -10,12 +11,13 @@ server.route({
     reply('Hello world!');
   }
 });
+*/
 
 server.route({
   method: 'GET',
-  path: '/{name}',
+  path: '/{name?}',
   handler: function (req, reply) {
-    reply('Hello, ' + encodeURIComponent(req.params.name) + '!');
+    reply('Hello, ' + encodeURIComponent(req.params.name || 'World') + '!');
   }
 });
 
